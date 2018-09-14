@@ -106,6 +106,9 @@ class User extends Model
         $user = new User();
         $user->username = $data['username'];
         $user->card_id = $data['card_id'];
+        $user->phone = $data['phone'];
+        $user->profession = $data['profession'];
+//        $user->status = $data['status'];
         $user->group = $data['group'];
         $user->rank = $data['rank'];
         try {

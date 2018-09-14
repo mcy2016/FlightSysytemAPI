@@ -147,7 +147,7 @@ class Flight extends Model
         $with['attr'] = function ($query) {
             $query->order('order', 'desc');
         };
-        $arrFlight = self::where('ac_status', '>', 0)
+        $arrFlight = self::where('cancel_flag', '<>', 1)
             ->where('flt_date', 'between', $planeDate)
             ->with(['attr'])->order(['std' => 'asc'])->select();
         return $arrFlight;

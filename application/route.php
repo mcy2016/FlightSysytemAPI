@@ -54,6 +54,9 @@ Route::get('api/:verison/work_hours', 'api/:verison.UserLog/shiftByProfession');
 
 // 飞行时间、航段相关
 Route::get('api/:verison/route_all', 'api/:verison.Route/getAll');
+Route::post('api/:verison/update_route', 'api/:verison.Route/updateRoute');
 
 //注册、登录
 Route::post('api/:verison/login', 'api/:verison.Login/login');
+
+Route::get('api/:verison/hello', 'api/:verison.Hello/hello');

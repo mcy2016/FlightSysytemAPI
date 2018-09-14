@@ -78,8 +78,8 @@ class ArrPlane extends Model
                 $ArrPlaneModel->attr()->on_time = $arrFlight['on_time'];
                 $ArrPlaneModel->attr()->eta = $arrFlight['eta'];
                 $ArrPlaneModel->ac_status = $ac_status;
-                if ($arrFlight['ac_stop_arr'] && $planeInfo['ac_status'] == 2) {
-                    //TODO 获取排序
+                if ($arrFlight['ac_stop_arr']) {
+                    //TODO 获取排序 && $planeInfo['ac_status'] == 2
                     $order = self::_order($arrFlight['ac_stop_arr']);
                     $ArrPlaneModel->attr->order = $order;
                 }

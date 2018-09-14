@@ -39,4 +39,28 @@ class Route extends Model
 //        $list = Db::table('f_route')->page($page, $listRows)->select();
         return $list;
     }
+
+    public static function updateRoute($data)
+    {
+        if (array_key_exists('id', $data)) {
+            $route = self::where('id', '=', $data['id'])->find();
+            if (!$route) {
+                return false;
+            } else {
+                $route->flight_time = $data['flight_time'];
+                $route->dep_apt = $data['dep_apt'];
+                $route->dep_apt_zh = $data['dep_apt_zh'];
+                $route->arr_apt = 'KWE';
+                $rs = $route->save();
+            }
+        } else {
+            $route = new Route();
+            $route->flight_time = $data['flight_time'];
+            $route->dep_apt = $data['dep_apt'];
+            $route->dep_apt_zh = $data['dep_apt_zh'];
+            $route->arr_apt = 'KWE';
+            $rs = $route->save();
+        }
+        return $rs;
+    }
 }

@@ -9,6 +9,7 @@
 namespace app\api\controller\v1;
 
 use app\api\model\Route as RouteModel;
+use think\Request;
 
 class Route
 {
@@ -28,6 +29,18 @@ class Route
      */
     public function updateRoute()
     {
-
+        $result = [];
+        $request = Request::instance();
+        $routeParam = $request->param();
+        $rs = RouteModel::updateRoute($routeParam);
+        if (!$rs) {
+            $result['code'] = 0;
+            $result['data'] = [];
+            $result['msg'] = '失败';
+        }
+        $result['code'] = 1;
+        $result['data'] = $rs;
+        $result['msg'] = '成功';
+        return json($result);
     }
 }
